@@ -128,7 +128,7 @@ abstract class AbstractFunctionalSpec extends Specification {
     private BuildResult runProject(File projectDir, String args) {
         try {
             GradleRunner.create()
-                .withGradleVersion("7.3")
+                .withGradleVersion(GradleVersion.current().version)
                 .withProjectDir(projectDir)
                 .withPluginClasspath()
                 .withDebug(true)
