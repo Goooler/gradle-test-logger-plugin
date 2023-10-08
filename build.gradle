@@ -84,7 +84,6 @@ tasks.named("test") {
 
 tasks.register("functionalTest", Test) {
     dependsOn 'pluginUnderTestMetadata', 'testClasses'
-    mustRunAfter 'test'
 
     useJUnitPlatform()
 
