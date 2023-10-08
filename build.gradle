@@ -72,7 +72,7 @@ idea {
     }
 }
 
-test {
+tasks.named("test") {
     useJUnitPlatform()
 
     testClassesDirs += sourceSets.functionalTest.output.classesDirs
@@ -86,7 +86,10 @@ test {
     exclude 'com/adarshr/gradle/testlogger/functional/**'
 }
 
-task functionalTest(type: Test) {
+tasks.register("functionalTest", Test) {
+    dependsOn 'pluginUnderTestMetadata', 'testClasses'
+    mustRunAfter 'test'
+
     useJUnitPlatform()
 
     inputs.dir "$projectDir/src/test-functional/resources"
@@ -104,6 +107,6 @@ task functionalTest(type: Test) {
     include 'com/adarshr/gradle/testlogger/functional/**'
 }
 
-tasks.check.dependsOn 'functionalTest'
-tasks.functionalTest.dependsOn 'pluginUnderTestMetadata', 'testClasses'
-tasks.functionalTest.mustRunAfter 'test'
+tasks.named("check") {
+    dependsOn("functionalTest")
+}
