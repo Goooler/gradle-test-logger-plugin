@@ -48,7 +48,6 @@ dependencies {
     testImplementation 'org.objenesis:objenesis:3.3'
     testImplementation 'commons-io:commons-io:2.14.0'
 
-    functionalTestImplementation localGroovy()
     functionalTestImplementation gradleTestKit()
     functionalTestImplementation 'org.spockframework:spock-core:2.0-groovy-3.0'
     functionalTestImplementation 'commons-io:commons-io:2.14.0'
